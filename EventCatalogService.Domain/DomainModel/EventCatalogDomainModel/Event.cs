@@ -1,15 +1,11 @@
-﻿using Microservice.Framework.Domain.Aggregates;
-using Microservice.Framework.Domain.Events;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Entities;
+using EventCatalogService.Domain.DomainModel.EventCatalogDomainModel.Events;
+using Microservice.Framework.Domain.Aggregates;
 // the link to the videos https://www.youtube.com/watch?v=eHiDJR6sL58
 
 namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
 {
+
     public class Event : AggregateRoot<Event, EventId>
     {
         #region Contructors
@@ -20,8 +16,9 @@ namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
 
         public Event(EventId id)
 
-            : base()
-        { }
+            : base(id)
+        {
+        }
 
 
         #endregion
@@ -29,7 +26,7 @@ namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
 
         #region  Properties
 
-        public string Eventname { get; set; }
+        public string EventName { get; set; }
 
         public decimal Price { get; set; }
         public string Artist { get; set; }
@@ -38,9 +35,11 @@ namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
 
         public string Description { get; set; }
 
-        public string imageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public CategoryId CategoryId { get; set; }
+
+        #endregion
 
         #region Methods 
 
@@ -61,8 +60,8 @@ namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
             Artist = artist;
             Date = date;
             Description = description;
-            imageUrl = imageUrl;
-            CategoryId= categoryId;
+            ImageUrl = imageUrl;
+            CategoryId = categoryId;
 
             Emit(new AddedEvent(
                 eventName,
@@ -72,10 +71,9 @@ namespace EventCatalogService.Domain.DomainModel.EventCatalogDomainModel
                 description,
                 imageUrl,
                 categoryId));
+
+           
         }
         #endregion
     }
-
-
-}
 }

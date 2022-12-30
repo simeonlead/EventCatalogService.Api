@@ -14,9 +14,6 @@
 
   <ItemGroup>
     <Folder Include="DomainModel\EventCatalogDomainModel\Commands\" />
-    <Folder Include="DomainModel\EventCatalogDomainModel\Entities\" />
-    <Folder Include="DomainModel\EventCatalogDomainModel\Events\" />
-    <Folder Include="DomainModel\EventCatalogDomainModel\Queries\" />
   </ItemGroup>
 
 </Project>
